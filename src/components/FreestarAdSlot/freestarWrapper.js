@@ -36,10 +36,10 @@ class FreestarWrapper {
       this.loaded = window.freestarReactCompontentLoaded = true
       this.keyValueConfigMappingLocation = keyValueConfigMappingLocation
       const qa = window.location.search.indexOf('fsdebug') > -1 ? '/qa' : ''
-      const url = `https://a.pub.network/${publisher}${qa}/pubfig.min.js`
+      let url = `https://a.pub.network/${publisher}${qa}/pubfig.min.js`
 
       if (!!version) {
-        const url = `https://a.pub.network/core/pubfig/${version}/pubfig.min.js`
+        url = `https://a.pub.network/core/pubfig/${version}/pubfig.min.js`
       }
 
       window.freestar = window.freestar || {}
