@@ -21,11 +21,12 @@ class FreestarAdSlot extends Component {
       targeting,
       keyValueConfigMappingURL,
       publisher,
-      integrity
+      integrity,
+      version
     } = this.props
     const { slotId } = this.state
 
-    await Freestar.init(publisher, keyValueConfigMappingURL, integrity)
+    await Freestar.init(publisher, keyValueConfigMappingURL, integrity, version)
     const mappedPlacementName = await Freestar.getMappedPlacementName(placementName,targeting)
     this.setState({placementName: mappedPlacementName})
     Freestar.newAdSlot(mappedPlacementName,slotId, onNewAdSlotsHook, channel, targeting, adUnitPath, slotSize, sizeMapping)
@@ -99,7 +100,8 @@ FreestarAdSlot.propTypes = {
   ),
   keyValueConfigMappingURL: PropTypes.string,
   queue: PropTypes.bool,
-  integrity: PropTypes.string
+  integrity: PropTypes.string,
+  version: PropTypes.string
 }
 
 FreestarAdSlot.defaultProps = {
@@ -117,7 +119,8 @@ FreestarAdSlot.defaultProps = {
   slotSize : null,
   sizeMapping: null,
   keyValueConfigMappingURL: null,
-  integrity: null
+  integrity: null,
+  version: null
 }
 
 export default FreestarAdSlot

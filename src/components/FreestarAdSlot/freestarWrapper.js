@@ -28,7 +28,7 @@ class FreestarWrapper {
       return [];
     }
   }
-  async init (publisher, keyValueConfigMappingLocation, integrity) {
+  async init (publisher, keyValueConfigMappingLocation, integrity, version = null) {
     window.freestarReactCompontentLoaded = window.freestarReactCompontentLoaded || false
     this.loaded = window.freestarReactCompontentLoaded
     this.logEnabled = window.location.search.indexOf('fslog') > -1
@@ -37,6 +37,10 @@ class FreestarWrapper {
       this.keyValueConfigMappingLocation = keyValueConfigMappingLocation
       const qa = window.location.search.indexOf('fsdebug') > -1 ? '/qa' : ''
       const url = `https://a.pub.network/${publisher}${qa}/pubfig.min.js`
+
+      if (!!version) {
+        const url = `https://a.pub.network/core/pubfig/${version}/pubfig.min.js`
+      }
 
       window.freestar = window.freestar || {}
       window.freestar.hitTime = Date.now()
