@@ -29,16 +29,20 @@ class FreestarWrapper {
     }
   }
   async init (publisher, keyValueConfigMappingLocation, integrity, version = null) {
+    console.log("init 1")
+    console.log(version)
     window.freestarReactCompontentLoaded = window.freestarReactCompontentLoaded || false
     this.loaded = window.freestarReactCompontentLoaded
     this.logEnabled = window.location.search.indexOf('fslog') > -1
     if (!this.loaded) {
+      console.log("init 2")
       this.loaded = window.freestarReactCompontentLoaded = true
       this.keyValueConfigMappingLocation = keyValueConfigMappingLocation
       const qa = window.location.search.indexOf('fsdebug') > -1 ? '/qa' : ''
       let url = `https://a.pub.network/${publisher}${qa}/pubfig.min.js`
 
       if (!!version) {
+        console.log("init 3")
         url = `https://a.pub.network/core/pubfig/${version}/pubfig.min.js`
       }
 
